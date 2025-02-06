@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -22,8 +21,11 @@ import {
   Car,
   MapPin,
   FileSpreadsheet,
-  Fuel
+  Fuel,
+  Moon,
+  Sun
 } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const data = [
   { month: 'Янв', sales: 30, orders: 20 },
@@ -52,10 +54,10 @@ const StatCard = ({ title, value, icon: Icon, className }: {
 
 const Index = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b bg-card">
         <div className="flex h-16 items-center px-4">
           <Button
@@ -102,6 +104,17 @@ const Index = () => {
           </nav>
 
           <div className="ml-auto flex items-center space-x-4">
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </Button>
             <Button variant="ghost" size="icon">
               <Bell className="h-5 w-5" />
             </Button>
