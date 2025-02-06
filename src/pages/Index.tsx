@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -17,7 +18,11 @@ import {
   Menu,
   Bell,
   Mail,
-  User
+  User,
+  Car,
+  MapPin,
+  FileSpreadsheet,
+  Fuel
 } from "lucide-react";
 
 const data = [
@@ -61,6 +66,41 @@ const Index = () => {
           >
             <Menu className="h-5 w-5" />
           </Button>
+          
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center space-x-4 ml-4">
+            <Link to="/drivers" className="text-sm font-medium transition-colors hover:text-primary">
+              <Button variant="ghost" className="flex items-center gap-2">
+                <Car className="h-4 w-4" />
+                Водители
+              </Button>
+            </Link>
+            <Link to="/transport" className="text-sm font-medium transition-colors hover:text-primary">
+              <Button variant="ghost" className="flex items-center gap-2">
+                <Car className="h-4 w-4" />
+                Транспорт
+              </Button>
+            </Link>
+            <Link to="/location" className="text-sm font-medium transition-colors hover:text-primary">
+              <Button variant="ghost" className="flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                Местоположение
+              </Button>
+            </Link>
+            <Link to="/direction-sheet" className="text-sm font-medium transition-colors hover:text-primary">
+              <Button variant="ghost" className="flex items-center gap-2">
+                <FileSpreadsheet className="h-4 w-4" />
+                Путевой лист
+              </Button>
+            </Link>
+            <Link to="/fuel-info" className="text-sm font-medium transition-colors hover:text-primary">
+              <Button variant="ghost" className="flex items-center gap-2">
+                <Fuel className="h-4 w-4" />
+                Информация о топливе
+              </Button>
+            </Link>
+          </nav>
+
           <div className="ml-auto flex items-center space-x-4">
             <Button variant="ghost" size="icon">
               <Bell className="h-5 w-5" />
@@ -73,6 +113,44 @@ const Index = () => {
             </Button>
           </div>
         </div>
+        
+        {/* Mobile Navigation */}
+        {sidebarOpen && (
+          <div className="md:hidden border-t p-4">
+            <nav className="flex flex-col space-y-2">
+              <Link to="/drivers" className="text-sm font-medium transition-colors hover:text-primary">
+                <Button variant="ghost" className="w-full justify-start">
+                  <Car className="h-4 w-4 mr-2" />
+                  Водители
+                </Button>
+              </Link>
+              <Link to="/transport" className="text-sm font-medium transition-colors hover:text-primary">
+                <Button variant="ghost" className="w-full justify-start">
+                  <Car className="h-4 w-4 mr-2" />
+                  Транспорт
+                </Button>
+              </Link>
+              <Link to="/location" className="text-sm font-medium transition-colors hover:text-primary">
+                <Button variant="ghost" className="w-full justify-start">
+                  <MapPin className="h-4 w-4 mr-2" />
+                  Местоположение
+                </Button>
+              </Link>
+              <Link to="/direction-sheet" className="text-sm font-medium transition-colors hover:text-primary">
+                <Button variant="ghost" className="w-full justify-start">
+                  <FileSpreadsheet className="h-4 w-4 mr-2" />
+                  Путевой лист
+                </Button>
+              </Link>
+              <Link to="/fuel-info" className="text-sm font-medium transition-colors hover:text-primary">
+                <Button variant="ghost" className="w-full justify-start">
+                  <Fuel className="h-4 w-4 mr-2" />
+                  Информация о топливе
+                </Button>
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       <main className="container mx-auto p-4 md:p-6 lg:p-8">
