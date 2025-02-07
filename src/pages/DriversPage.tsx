@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -10,7 +9,7 @@ const DriversPage = () => {
   useEffect(() => {
     const fetchDrivers = async () => {
       try {
-        const response = await fetch('http://10.1.16.211/api/v1/drivers/');
+        const response = await fetch('http://10.1.16.211/api/v1/driver-info/');
         if (!response.ok) {
           throw new Error('Ошибка сети при получении данных');
         }
@@ -31,14 +30,14 @@ const DriversPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">Водители</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Водители</h1>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {drivers.map((driver: any) => (
           <Card key={driver.id} className="hover:shadow-lg transition-shadow">
             <CardContent className="p-4">
               <h3 className="font-semibold">{driver.name} {driver.surname}</h3>
-              <p className="text-sm text-muted-foreground mt-2">Опыт: {driver.experience} лет</p>
-              <p className="text-sm text-muted-foreground">Категория: {driver.category}</p>
+              <p className="text-sm text-muted-foreground mt-2">Телефон: {driver.phone_number}</p>
+              <p className="text-sm text-muted-foreground">Стаж: {driver.experience} лет</p>
             </CardContent>
           </Card>
         ))}

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -33,7 +32,7 @@ const FuelInfoPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">Информация о топливе</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Информация о топливе</h1>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {fuelInfo.map((info: any) => (
           <Card key={info.id} className="hover:shadow-lg transition-shadow">
