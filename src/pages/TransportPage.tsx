@@ -40,12 +40,14 @@ const TransportPage = () => {
         <h1 className="text-3xl font-bold mb-6 text-center">Транспорт</h1>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {vehicles.map((vehicle) => (
-            <Card key={vehicle.id} className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-4">
-                <h3 className="font-semibold">{vehicle.car_make} {vehicle.car_model}</h3>
-                <p className="text-sm text-muted-foreground mt-2">Год: {vehicle.year_of_issue}</p>
-                <p className="text-sm text-muted-foreground">Госномер: {vehicle.state_number}</p>
-                <p className="text-sm text-muted-foreground">Пробег: {vehicle.car_mileage} км</p>
+            <Card key={vehicle.id} className="hover:shadow-lg transition-shadow bg-gradient-to-br from-purple-50 to-white border-purple-100">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-lg text-purple-900">{vehicle.car_make} {vehicle.car_model}</h3>
+                <div className="mt-4 space-y-2">
+                  <p className="text-sm text-purple-700">Год: {vehicle.year_of_issue}</p>
+                  <p className="text-sm text-purple-700">Госномер: {vehicle.state_number}</p>
+                  <p className="text-sm text-purple-700">Пробег: {vehicle.car_mileage} км</p>
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -56,3 +58,4 @@ const TransportPage = () => {
 };
 
 export default TransportPage;
+

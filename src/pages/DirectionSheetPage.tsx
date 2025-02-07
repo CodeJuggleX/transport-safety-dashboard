@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -52,19 +53,21 @@ const DirectionSheetPage = () => {
         <h1 className="text-3xl font-bold mb-6 text-center">Путевые листы</h1>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {sheets.map((sheet: any) => (
-            <Card key={sheet.id} className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-4">
-                <h3 className="font-semibold">
+            <Card key={sheet.id} className="hover:shadow-lg transition-shadow bg-gradient-to-br from-purple-50 to-white border-purple-100">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-lg text-purple-900">
                   {sheet.driver?.name} {sheet.driver?.surname}
                 </h3>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {sheet.car?.car_make} {sheet.car?.car_model}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Дата: {sheet.start_data} - {sheet.end_data}
-                </p>
+                <div className="mt-4 space-y-2">
+                  <p className="text-sm text-purple-700">
+                    {sheet.car?.car_make} {sheet.car?.car_model}
+                  </p>
+                  <p className="text-sm text-purple-700">
+                    Дата: {sheet.start_data} - {sheet.end_data}
+                  </p>
+                </div>
                 <Button 
-                  className="mt-4 w-full"
+                  className="mt-4 w-full bg-purple-600 hover:bg-purple-700"
                   onClick={() => handleDownload(sheet.id)}
                 >
                   Загрузить
