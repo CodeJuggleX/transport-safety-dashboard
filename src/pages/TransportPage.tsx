@@ -1,29 +1,22 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
+import { mockVehicles } from "@/data/mockData";
+import { toast } from "sonner";
 
 const TransportPage = () => {
-  const [vehicles, setVehicles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [vehicles, setVehicles] = useState(mockVehicles);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchVehicles = async () => {
-      try {
-        const response = await fetch('http://10.1.16.211/api/v1/car-info/');
-        if (!response.ok) {
-          throw new Error('Ошибка сети при получении данных');
-        }
-        const data = await response.json();
-        setVehicles(data.results || []);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Произошла ошибка');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVehicles();
+    // Simulate API loading
+    setLoading(true);
+    setTimeout(() => {
+      setVehicles(mockVehicles);
+      setLoading(false);
+    }, 500);
   }, []);
 
   if (loading) return (
@@ -46,7 +39,7 @@ const TransportPage = () => {
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold mb-6 text-center">Транспорт</h1>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {vehicles.map((vehicle: any) => (
+          {vehicles.map((vehicle) => (
             <Card key={vehicle.id} className="hover:shadow-lg transition-shadow">
               <CardContent className="p-4">
                 <h3 className="font-semibold">{vehicle.car_make} {vehicle.car_model}</h3>
